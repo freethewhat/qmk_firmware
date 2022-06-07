@@ -1,3 +1,7 @@
+#include "../../config.h"
+
+#define COMBO_COUNT 1
+
 #undef RGB_DISABLE_TIMEOUT
 #define RGB_DISABLE_TIMEOUT 900000
 

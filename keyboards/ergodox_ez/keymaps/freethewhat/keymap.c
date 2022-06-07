@@ -1,6 +1,8 @@
 #include QMK_KEYBOARD_H
 #include "version.h"
 
+#include "combos/caps_word.c"
+
 enum layers {
     BASE,  // default layer
     SYMB,  // symbols
@@ -72,6 +74,7 @@ KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                    
                                                                                     KC_TRNS, KC_TRNS,          KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
 ),
 };
+
 // clang-format on
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -83,7 +86,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
     }
     return true;
-};
+}
 
 // Runs just one time when the keyboard initializes.
 void keyboard_post_init_user(void) {
