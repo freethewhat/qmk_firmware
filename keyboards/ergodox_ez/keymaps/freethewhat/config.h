@@ -1,5 +1,4 @@
 #include "../../config.h"
-
 #define COMBO_COUNT 1
 
 #undef RGB_DISABLE_TIMEOUT

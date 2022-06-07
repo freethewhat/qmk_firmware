@@ -1,6 +1,7 @@
 #include QMK_KEYBOARD_H
 #include "version.h"
 
+#include "macros/macro_setup.c"
 #include "combos/caps_word.c"
 #include "tapdance/td_codes.c"
 #include "tapdance/td_setup.c"
@@ -8,7 +9,6 @@
 #include "tapdance/dances/td_macro_1.c"
 #include "tapdance/dances/td_macro_2.c"
 #include "tapdance/td_actions.c"
-
 
 enum layers {
     BASE,  // default layer
@@ -20,7 +20,7 @@ enum layers {
 };
 
 enum custom_keycodes {
-#ifdef ORYX_CONFIGURATOR
+  #ifdef ORYX_CONFIGURATOR
     VRSN = EZ_SAFE_RANGE,
 #else
     VRSN = SAFE_RANGE,
@@ -73,35 +73,20 @@ KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                    
 [MACR] = LAYOUT_ergodox_pretty(
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                 KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                 KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_TRNS, RESET,          KC_TRNS, KC_TRNS, KC_TRNS,                                                                 KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, TD(TD_MEDIA), KC_TRNS, KC_TRNS,                                 KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                                                                                 KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                                                                                                    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                                                                                                                    KC_TRNS, KC_TRNS,
-                                                                                    KC_TRNS, KC_TRNS,          KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
+    KC_TRNS, KC_TRNS, RESET, KC_TRNS, KC_TRNS, KC_TRNS,                                            KC_TRNS, MACRO_NOTEPAD, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+    KC_TRNS, MACRO_WT, MACRO_CODE, KC_TRNS, TD(TD_MEDIA), KC_TRNS, KC_TRNS,                        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                                   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                                                                        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                                                                                 KC_TRNS, KC_TRNS,
+                                                               KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
 ),
 };
 
-// clang-format on
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    if (record->event.pressed) {
-        switch (keycode) {
-            case VRSN:
-                SEND_STRING(QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION);
-                return false;
-        }
-    }
-    return true;
-}
-
-// Runs just one time when the keyboard initializes.
 void keyboard_post_init_user(void) {
 #ifdef RGBLIGHT_COLOR_LAYER_0
     rgblight_setrgb(RGBLIGHT_COLOR_LAYER_0);
 #endif
 };
-
 // Runs whenever there is a layer state change.
 layer_state_t layer_state_set_user(layer_state_t state) {
     ergodox_board_led_off();
