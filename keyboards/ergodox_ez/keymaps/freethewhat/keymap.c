@@ -8,6 +8,7 @@
 #include "tapdance/dances/td_media.c"
 #include "tapdance/dances/td_macro_1.c"
 #include "tapdance/dances/td_macro_2.c"
+#include "tapdance/dances/td_delete.c"
 #include "tapdance/td_actions.c"
 
 enum layers {
@@ -33,8 +34,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // left hand
   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                 KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
   KC_TRNS, KC_Q,           KC_W,           KC_F,           KC_P,           KC_B,           KC_TRNS,                                 KC_TRNS, KC_J,           KC_L,           KC_U,           KC_Y,           KC_SCOLON,      KC_TRNS,
-  KC_TRNS, KC_A,           KC_R,           KC_S,           KC_T,           KC_G,                                                                           KC_M,           KC_N,           KC_E,           KC_I,           KC_O,           KC_TRNS,
-  KC_TRNS, MT(MOD_LSFT, KC_Z),MT(MOD_LGUI, KC_X),MT(MOD_LALT, KC_C),MT(MOD_LCTL, KC_D),KC_V,           KC_TRNS,                                 KC_TRNS, KC_K,           MT(MOD_LCTL, KC_H),MT(MOD_LALT, KC_COMMA),MT(MOD_LGUI, KC_DOT),MT(MOD_LSFT, KC_SLASH),KC_TRNS,
+  KC_TRNS, MT(MOD_LCTL, KC_A),MT(MOD_LGUI, KC_R),MT(MOD_LALT, KC_S),MT(MOD_LSFT, KC_T), KC_G,                                                                          KC_M,MT(MOD_LSFT, KC_N),MT(MOD_LALT, KC_E),MT(MOD_LGUI, KC_I),MT(MOD_LCTL, KC_O),KC_TRNS,
+  KC_TRNS,     KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,   KC_TRNS,                                 KC_TRNS, KC_K,              KC_H,   KC_COMMA,   KC_DOT,   KC_SLASH,  KC_TRNS,
   TD(TD_F5), KC_F8, KC_F10, TD(TD_F12), TD(TD_MACRO_1),                                                                                                TD(TD_MACRO_2),DM_REC2, KC_TRNS, KC_TRNS, KC_TRNS,
                                                     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                                                                     KC_TRNS, KC_TRNS,
@@ -154,3 +155,18 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
     return state;
 };
+
+void caps_word_set_user(bool active) {
+    if (active) {
+        ergodox_right_led_1_on();
+            ergodox_right_led_2_on();
+            ergodox_right_led_3_on();
+        // Do something when Caps Word activates.
+    } else {
+        ergodox_board_led_off();
+    ergodox_right_led_1_off();
+    ergodox_right_led_2_off();
+    ergodox_right_led_3_off();
+        // Do something when Caps Word deactivates.
+    }
+}
