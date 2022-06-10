@@ -2,7 +2,7 @@
 #include "version.h"
 
 #include "macros/macro_setup.c"
-#include "combos/caps_word.c"
+//#include "combos/caps_word.c"
 #include "tapdance/td_codes.c"
 #include "tapdance/td_setup.c"
 #include "tapdance/dances/td_media.c"
@@ -32,10 +32,10 @@ enum custom_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [BASE] = LAYOUT_ergodox_pretty(
   // left hand
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                 KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-  KC_TRNS, KC_Q,           KC_W,           KC_F,           KC_P,           KC_B,           KC_TRNS,                                 KC_TRNS, KC_J,           KC_L,           KC_U,           KC_Y,           KC_SCOLON,      KC_TRNS,
-  KC_TRNS, MT(MOD_LCTL, KC_A),MT(MOD_LGUI, KC_R),MT(MOD_LALT, KC_S),MT(MOD_LSFT, KC_T), KC_G,                                                                          KC_M,MT(MOD_LSFT, KC_N),MT(MOD_LALT, KC_E),MT(MOD_LGUI, KC_I),MT(MOD_LCTL, KC_O),KC_TRNS,
-  KC_TRNS,     KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,   KC_TRNS,                                 KC_TRNS, KC_K,              KC_H,   KC_COMMA,   KC_DOT,   KC_SLASH,  KC_TRNS,
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, RGB_HUI,                                 RGB_MOD, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+  KC_DEL, KC_Q, KC_W, KC_F, KC_P, KC_B, MACRO_COPY_DOWN,                                 KC_TRNS, KC_J,           KC_L,           KC_U,           KC_Y,           KC_SCOLON,      KC_DEL,
+  KC_BSPACE, MT(MOD_LCTL, KC_A),MT(MOD_LGUI, KC_R),MT(MOD_LALT, KC_S),MT(MOD_LSFT, KC_T), KC_G,                                                                          KC_M,MT(MOD_LSFT, KC_N),MT(MOD_LALT, KC_E),MT(MOD_LGUI, KC_I),MT(MOD_LCTL, KC_O),KC_BSPACE,
+  CAPSWRD,     KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,   KC_TRNS,                                 KC_TRNS, KC_K,              KC_H,   KC_COMMA,   KC_DOT,   KC_SLASH,  KC_TRNS,
   TD(TD_F5), KC_F8, KC_F10, TD(TD_F12), TD(TD_MACRO_1),                                                                                                TD(TD_MACRO_2),DM_REC2, KC_TRNS, KC_TRNS, KC_TRNS,
                                                     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                                                                     KC_TRNS, KC_TRNS,

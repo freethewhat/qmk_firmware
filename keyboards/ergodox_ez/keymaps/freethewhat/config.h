@@ -1,4 +1,4 @@
-#include "../../config.h"
+// #include "../../config.h"
 #define COMBO_COUNT 1
 
 #undef RGB_DISABLE_TIMEOUT
@@ -6,3 +6,5 @@
 
 #define USB_SUSPEND_WAKEUP_DELAY 0
 #define RGB_MATRIX_STARTUP_SPD 60
+
+#define RGB_MATRIX_KEYRELEASES
