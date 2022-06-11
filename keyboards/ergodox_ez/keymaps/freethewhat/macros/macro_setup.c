@@ -27,7 +27,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             break;
         case MACRO_COPY_DOWN:
             if (record->event.pressed) {
-                SEND_STRING(SS_LCTL(SS_LSFT(SS_TAP(X_LEFT))) SS_DELAY(100) SS_LCTL(SS_TAP(X_C)) SS_DELAY(100) SS_TAP(X_TAB) SS_DELAY(100) SS_LCTL(SS_TAP(X_V)));
+                SEND_STRING(SS_LCTL(SS_TAP(X_A)) SS_DELAY(100) SS_LCTL(SS_TAP(X_C)) SS_DELAY(100) SS_TAP(X_TAB) SS_DELAY(100) SS_LCTL(SS_TAP(X_V)));
             }
             break;
         default:

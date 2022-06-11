@@ -2,13 +2,19 @@
 #include "version.h"
 
 #include "macros/macro_setup.c"
-//#include "combos/caps_word.c"
+// #include "combos/caps_word.c"
 #include "tapdance/td_codes.c"
 #include "tapdance/td_setup.c"
 #include "tapdance/dances/td_media.c"
 #include "tapdance/dances/td_macro_1.c"
 #include "tapdance/dances/td_macro_2.c"
+#include "tapdance/dances/td_exlm.c"
 #include "tapdance/dances/td_delete.c"
+#include "tapdance/dances/td_hash.c"
+#include "tapdance/dances/td_dlr.c"
+#include "tapdance/dances/td_ampr.c"
+#include "tapdance/dances/td_astr.c"
+#include "tapdance/dances/td_at.c"
 #include "tapdance/td_actions.c"
 
 enum layers {
@@ -31,55 +37,54 @@ enum custom_keycodes {
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [BASE] = LAYOUT_ergodox_pretty(
-  // left hand
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, RGB_HUI,                                 RGB_MOD, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-  KC_DEL, KC_Q, KC_W, KC_F, KC_P, KC_B, MACRO_COPY_DOWN,                                 KC_TRNS, KC_J,           KC_L,           KC_U,           KC_Y,           KC_SCOLON,      KC_DEL,
-  KC_BSPACE, MT(MOD_LCTL, KC_A),MT(MOD_LGUI, KC_R),MT(MOD_LALT, KC_S),MT(MOD_LSFT, KC_T), KC_G,                                                                          KC_M,MT(MOD_LSFT, KC_N),MT(MOD_LALT, KC_E),MT(MOD_LGUI, KC_I),MT(MOD_LCTL, KC_O),KC_BSPACE,
-  CAPSWRD,     KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,   KC_TRNS,                                 KC_TRNS, KC_K,              KC_H,   KC_COMMA,   KC_DOT,   KC_SLASH,  KC_TRNS,
-  TD(TD_F5), KC_F8, KC_F10, TD(TD_F12), TD(TD_MACRO_1),                                                                                                TD(TD_MACRO_2),DM_REC2, KC_TRNS, KC_TRNS, KC_TRNS,
-                                                    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                                                                    KC_TRNS, KC_TRNS,
-                                    LT(SYMB,KC_SPACE), LT(FUNC,KC_BSPACE),KC_TRNS, KC_TRNS, LT(MACR, KC_TAB),   LT(ARRO,KC_ENTER)
+KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, RGB_HUI, RGB_MOD, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, 
+KC_DELETE, KC_Q, KC_W, KC_F, KC_P, KC_B, MACRO_COPY_DOWN, KC_NO, KC_J, KC_L, KC_U, KC_Y, KC_SCOLON, KC_DELETE, 
+KC_BSPACE, MT(MOD_LCTL, KC_A), MT(MOD_LGUI, KC_R), MT(MOD_LALT, KC_S), MT(MOD_LSFT, KC_T), KC_G, KC_M, MT(MOD_LSFT, KC_N), MT(MOD_LALT, KC_E), MT(MOD_LGUI, KC_I), MT(MOD_LCTL, KC_O), KC_BSPACE, 
+CAPSWRD, KC_Z, KC_X, KC_C, KC_D, KC_V, KC_NO, KC_NO, KC_K, KC_H, KC_COMMA, KC_DOT, KC_SLASH, CAPSWRD, 
+TD(TD_F5), KC_F8, KC_F10, TD(TD_F12), TD(TD_MACRO_1), TD(TD_MACRO_2), DM_REC2, KC_NO, KC_NO, KC_NO, 
+KC_NO, KC_NO, KC_NO, KC_NO, 
+KC_NO, KC_NO, 
+LT(SYMB, KC_SPACE), LT(FUNC, KC_TAB), KC_NO, KC_NO, LT(MACR, KC_TAB), LT(ARRO, KC_ENTER)
 ),
 [SYMB] = LAYOUT_ergodox_pretty(
-KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                 KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-KC_TRNS, KC_GRAVE,       KC_TILD,        KC_COLN,        KC_UNDS,        KC_TRNS, KC_TRNS,                                 KC_TRNS, KC_TRNS, KC_EQUAL,       KC_SCOLON,      KC_PIPE,        KC_DQUO,        KC_TRNS,
-KC_TRNS, KC_EXLM,        KC_AT,          KC_HASH,        KC_DLR,         KC_PERC,                                                                        KC_CIRC,        KC_AMPR,        KC_ASTR,        KC_BSLASH,      KC_QUOTE,       KC_TRNS,
-KC_TRNS, KC_LABK,        KC_LBRACKET,    KC_LPRN,        KC_LCBR,        KC_MINUS,       KC_TRNS,                                 KC_TRNS, KC_PLUS,        KC_RCBR,        KC_RPRN,        KC_RBRACKET,    KC_RABK,        KC_TRNS,
-KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                                                                                 KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                                                                                               KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                                                                                                                KC_TRNS, KC_TRNS,
-                                                                                KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
+    KC_NO,  KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,      KC_NO,                  KC_NO,  KC_NO,      KC_NO,          KC_NO,          KC_NO,                  KC_NO,                  KC_NO,
+    KC_TRANSPARENT,  KC_GRAVE,       KC_TILD,        KC_COLN,        KC_UNDS,        KC_NO,      KC_NO,                  KC_NO,  KC_NO,      KC_EQUAL,       KC_SCOLON,      KC_PIPE,                KC_DQUO,                KC_TRANSPARENT,
+    KC_TRANSPARENT,  TD(TD_EXLM),    TD(TD_AT),      TD(TD_HASH),    TD(TD_DLR),     KC_PERC,                                    KC_CIRC,    TD(TD_AMPR),    TD(TD_ASTR),    MT(MOD_LGUI,KC_BSLASH), MT(MOD_LCTL,KC_QUOTE),  KC_TRANSPARENT,
+    KC_TRANSPARENT,  KC_LABK,        KC_LBRACKET,    KC_LPRN,        KC_LCBR,        KC_MINUS,   KC_NO,                  KC_NO,  KC_PLUS,    KC_RCBR,        KC_RPRN,        KC_RBRACKET,            KC_RABK,                KC_TRANSPARENT,
+    KC_NO,  KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,                                      KC_NO,  KC_NO,      KC_NO,          KC_NO,
+                                                                                        KC_NO,  KC_NO,  KC_NO,  KC_NO,
+                                                                                                KC_NO,  KC_NO,
+                                                                            KC_NO,      KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO
 ),
 [ARRO] = LAYOUT_ergodox_pretty(
-KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                 KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_ESCAPE,      KC_HOME,        KC_UP,          KC_END,         KC_PGUP,        KC_TRNS,                                 KC_TRNS, KC_KP_ASTERISK, KC_KP_7,        KC_KP_8,        KC_KP_9,        KC_KP_PLUS,     KC_TRNS,
-    KC_TRNS, KC_LALT,        KC_LEFT,        KC_DOWN,        KC_RIGHT,       KC_PGDOWN,                                                                      KC_KP_SLASH,    KC_KP_4,        KC_KP_5,        KC_KP_6,        KC_KP_MINUS,    KC_TRNS,
-    KC_TRNS, KC_LCTRL,       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                 KC_TRNS, KC_KP_DOT,      KC_KP_1,        KC_KP_2,        KC_KP_3,        KC_KP_ENTER,    KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                                                                                 KC_KP_0,        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                                                                                                    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                                                                                                                    KC_TRNS, KC_TRNS,
-                                                                                    KC_LSHIFT,      TD(TD_DEL),    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
+    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                                 KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+    KC_TRANSPARENT, KC_ESCAPE,      KC_HOME,        KC_UP,          KC_END,         KC_PGUP,        KC_NO,                                 KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+    KC_TRANSPARENT, KC_NO, KC_LEFT,        KC_DOWN,        KC_RIGHT,       KC_PGDOWN,                                                                      KC_NO, KC_LSHIFT,      KC_LALT,        KC_LGUI,        KC_LCTRL,       KC_NO,
+    KC_TRANSPARENT, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                                 KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                                                                                                 KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+                                                                                                    KC_NO, KC_NO, KC_NO, KC_NO,
+                                                                                                                    KC_NO, KC_NO,
+                                                                                    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO
 ),
 [FUNC] = LAYOUT_ergodox_pretty(
-KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                 KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-KC_TRNS, KC_F1,   KC_F2,   KC_F3,   KC_F4,          KC_F5,    KC_TRNS,                                 KC_TRNS, KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         KC_TRNS,
-KC_TRNS, KC_1,    KC_2,    KC_3,    KC_4,           KC_F11,                                                                         KC_F12,    KC_7,           KC_8,           KC_9,           KC_0,           KC_TRNS,
-KC_TRNS, KC_TRNS, KC_TRNS,KC_TRNS,KC_5,           KC_TRNS,    KC_TRNS,                                 KC_TRNS, KC_PSCREEN,     KC_6,           KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                                                                                 KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                                                                                                KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                                                                                                                KC_TRNS, KC_TRNS,
-                                                                                KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
+    KC_NO,          KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,                      KC_NO,          KC_NO,          KC_NO,          KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+    KC_TRANSPARENT, KC_F1,  KC_F2,  KC_F3,  KC_F4,  KC_F5,                      KC_NO,          KC_NO,          KC_KP_ASTERISK, KC_KP_7,        KC_KP_8,        KC_KP_9,        KC_KP_PLUS,     KC_NO,
+    KC_TRANSPARENT, KC_F6,  KC_F7,  KC_F9,  KC_F10, KC_F11,                                    KC_KP_SLASH,    KC_KP_4,        KC_KP_5,        KC_KP_6,        KC_KP_MINUS,    KC_NO,
+    KC_TRANSPARENT, KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_F12,                     KC_NO,  KC_NO,          KC_NO,          KC_KP_1, KC_KP_2,        KC_KP_3,        KC_NO, KC_NO,
+    KC_NO,          KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_KP_0,                                    KC_KP_DOT,      KC_KP_ENTER,    KC_NO,          KC_NO,
+                                                    KC_NO,      KC_NO,  KC_NO,  KC_NO,
+                                                                KC_NO,  KC_NO,
+                                            KC_NO,  KC_NO,      KC_NO,  KC_NO,  KC_NO,  KC_NO
 ),
 [MACR] = LAYOUT_ergodox_pretty(
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                 KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                 KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_TRNS, RESET, KC_TRNS, KC_TRNS, KC_TRNS,                                            KC_TRNS, MACRO_NOTEPAD, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_TRNS, MACRO_WT, MACRO_CODE, KC_TRNS, TD(TD_MEDIA), KC_TRNS, KC_TRNS,                        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                                   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                                                                        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                                                                                 KC_TRNS, KC_TRNS,
-                                                               KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
+    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                                 KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+    KC_TRANSPARENT, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                                 KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+    KC_TRANSPARENT, KC_NO, RESET,          KC_NO, KC_NO, KC_NO,                                                                 MACRO_NOTEPAD,  KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+    KC_TRANSPARENT, MACRO_WT,       MACRO_CODE, KC_NO,     TD(TD_MEDIA),   KC_NO, KC_NO,                                 KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,                                                                                                 KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
+                                                                                                    KC_NO, KC_NO, KC_NO, KC_NO,
+                                                                                                                    KC_NO, KC_NO,
+                                                                                    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO
 ),
 };
 
